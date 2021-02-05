@@ -23,10 +23,6 @@ Installation
 ------------
     python -m pip install sas32kd
 
-Installing as Debian package
-----------------------------
-    sudo dpkg -i lib-sas32kd-py-0.0.1.deb
-
 Author
 ------
 dgalus / avc <avcsec@protonmail.com>

@@ -11,6 +11,9 @@ Welcome to sas32kd's documentation!
    :caption: Contents:
 
    pages/quickstart.rst
+   pages/sas_library.rst
+   pages/sas_listener_library.rst
+   pages/enums.rst
 
 Indices and tables
 ==================

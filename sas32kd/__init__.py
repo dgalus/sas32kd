@@ -258,7 +258,7 @@ class Sas32kd:
     def relay(self, action: RelayAction, num: int):
         """
         Reply command.
-        :param action: Action to be performed on relay.
+        :param action: Action to be performed on relay. (Refer: RelayAction class).
         :param num: Relay number.
         :return: OK or ERROR
         """
@@ -275,7 +275,7 @@ class Sas32kd:
     def opto(self, action: OptoAction, num: int):
         """
         Opto command.
-        :param action: Action to be performed on opto.
+        :param action: Action to be performed on opto. (Refer: OptoAction class).
         :param num: Opto number.
         :return: OK or ERROR
         """
@@ -292,7 +292,7 @@ class Sas32kd:
     def salvo(self, option: SalvoOption, num: int):
         """
         Salvo command.
-        :param option: Ordering type of salvos.
+        :param option: Ordering type of salvos. (Refer: SalvoOption class).
         :param num: Salvo number.
         :return: OK or ERROR.
         """
@@ -310,7 +310,7 @@ class Sas32kd:
                                       fade_in_time: FadeTime, fade_out_time: FadeTime, channel: int):
         """
         Crosspoint transition control.
-        :param setting: Type of transition.
+        :param setting: Type of transition. (Refer: CrosspointTransitionControlSetting class).
         :param fade_in_time: Fade in time. (Refer: FadeTime class).
         :param fade_out_time: Fade out time. (Refer: FadeTime class).
         :param channel: Output channel number.
@@ -336,7 +336,7 @@ class Sas32kd:
         :param outp: Output channel number.
         :param gain: Source target gain level (1/10 dB steps, 1024 = Unity; valid 0 to 2048).
         :param fade_time: Fade time. (Refer: FadeTime class).
-        :param stage: Gain change stage.
+        :param stage: Gain change stage. (Refer: GainChangeStage class).
         :return: OK or ERROR.
         """
         if not self.is_disconnected:
@@ -361,7 +361,7 @@ class Sas32kd:
     def stereo_link(self, option: StereoLinkOption, setting: StereoLinkSetting, channel: int):
         """
         Stereo link modifier.
-        :param option: Input or output link.
+        :param option: Input or output link. (Refer: StereoLinkOption class).
         :param setting: Mono, stereo, source dependent or LR mono sum. (Refer: StereoLinkSetting class).
         :param channel: Output channel number.
         :return: OK or ERROR.

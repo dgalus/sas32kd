@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enums &#8212; sas32kd 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="SAS Listener Library Examples" href="sas_listener_library.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="enums">
+<h1>Enums<a class="headerlink" href="#enums" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">RelayAction</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Possible relay actions.&quot;&quot;&quot;</span>
+     <span class="n">MOMENTARY_ACTIVATION</span> <span class="o">=</span> <span class="mi">1</span>
+     <span class="n">LATCH</span> <span class="o">=</span> <span class="mi">2</span>
+     <span class="n">RELEASE</span> <span class="o">=</span> <span class="mi">3</span>
+     <span class="n">INQUIRY</span> <span class="o">=</span> <span class="mi">9</span>
+
+
+ <span class="k">class</span> <span class="nc">OptoAction</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Possible opto actions.&quot;&quot;&quot;</span>
+     <span class="n">OFF</span> <span class="o">=</span> <span class="mi">0</span>
+     <span class="n">ON</span> <span class="o">=</span> <span class="mi">1</span>
+     <span class="n">INQUIRY</span> <span class="o">=</span> <span class="mi">9</span>
+
+
+ <span class="k">class</span> <span class="nc">SalvoOption</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Describes how salvos are organized.&quot;&quot;&quot;</span>
+     <span class="n">ACTUAL_SALVO_NUM</span> <span class="o">=</span> <span class="mi">1</span>
+     <span class="n">ALPHANUMERIC_POSITION_OF_SALVO</span> <span class="o">=</span> <span class="mi">2</span>
+
+
+ <span class="k">class</span> <span class="nc">CrosspointTransitionControlSetting</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Possible transition control settings.&quot;&quot;&quot;</span>
+     <span class="n">CUT_OUT_CUT_IN</span> <span class="o">=</span> <span class="mi">0</span>
+     <span class="n">CUT_OUT_FADE_IN</span> <span class="o">=</span> <span class="mi">1</span>
+     <span class="n">FADE_OUT_CUT_IN</span> <span class="o">=</span> <span class="mi">2</span>
+     <span class="n">FADE_OUT_FADE_IN</span> <span class="o">=</span> <span class="mi">3</span>
+     <span class="n">CROSS_FADE</span> <span class="o">=</span> <span class="mi">4</span>
+     <span class="n">CUT_OUT_CUT_IN_WITH_DSP</span> <span class="o">=</span> <span class="mi">9</span>
+
+
+ <span class="k">class</span> <span class="nc">FadeTime</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Possible fade times.&quot;&quot;&quot;</span>
+     <span class="n">INSTANT</span> <span class="o">=</span> <span class="mi">0</span>
+     <span class="n">T_10MS</span> <span class="o">=</span> <span class="mi">1</span>
+     <span class="n">T_50MS</span> <span class="o">=</span> <span class="mi">2</span>
+     <span class="n">T_100MS</span> <span class="o">=</span> <span class="mi">3</span>
+     <span class="n">T_200MS</span> <span class="o">=</span> <span class="mi">4</span>
+     <span class="n">T_500MS</span> <span class="o">=</span> <span class="mi">5</span>
+     <span class="n">T_1S</span> <span class="o">=</span> <span class="mi">6</span>
+     <span class="n">T_2S</span> <span class="o">=</span> <span class="mi">7</span>
+     <span class="n">T_3S</span> <span class="o">=</span> <span class="mi">8</span>
+     <span class="n">T_4S</span> <span class="o">=</span> <span class="mi">9</span>
+     <span class="n">T_5S</span> <span class="o">=</span> <span class="mi">10</span>
+     <span class="n">T_6S</span> <span class="o">=</span> <span class="mi">11</span>
+     <span class="n">T_7S</span> <span class="o">=</span> <span class="mi">12</span>
+     <span class="n">T_8S</span> <span class="o">=</span> <span class="mi">13</span>
+     <span class="n">T_9S</span> <span class="o">=</span> <span class="mi">14</span>
+     <span class="n">T_10S</span> <span class="o">=</span> <span class="mi">15</span>
+
+
+ <span class="k">class</span> <span class="nc">GainChangeStage</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Possible gain change stages.&quot;&quot;&quot;</span>
+     <span class="n">SOURCE_INPUT_SENSITIVITY</span> <span class="o">=</span> <span class="mi">1</span>
+     <span class="n">OUTPUT_GAIN_TRIM</span> <span class="o">=</span> <span class="mi">3</span>
+     <span class="n">DSP_COEFFICIENT_LEVEL_NO_FADE_TIME</span> <span class="o">=</span> <span class="mi">10</span>
+     <span class="n">DSP_COEFFICIENT_LEVEL_FADE_TIME</span> <span class="o">=</span> <span class="mi">11</span>
+     <span class="n">DSP_MIXER_OUTPUT_MASTER_LEVEL_NO_FADE_TIME</span> <span class="o">=</span> <span class="mi">15</span>
+     <span class="n">DSP_MIXER_OUTPUT_MASTER_LEVEL_FADE_TIME</span> <span class="o">=</span> <span class="mi">16</span>
+
+
+ <span class="k">class</span> <span class="nc">StereoLinkOption</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Describes if input or output should be modified.&quot;&quot;&quot;</span>
+     <span class="n">INPUT_LINK</span> <span class="o">=</span> <span class="mi">0</span>
+     <span class="n">OUTPUT_LINK</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+ <span class="k">class</span> <span class="nc">StereoLinkSetting</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Types of inputs and outputs.&quot;&quot;&quot;</span>
+     <span class="n">MONO</span> <span class="o">=</span> <span class="mi">0</span>
+     <span class="n">STEREO</span> <span class="o">=</span> <span class="mi">1</span>
+     <span class="n">SOURCE_DEPENDENT</span> <span class="o">=</span> <span class="mi">2</span>
+     <span class="n">LR_MONO_SUM</span> <span class="o">=</span> <span class="mi">3</span>
+
+
+ <span class="k">class</span> <span class="nc">EnhancedTakeOptions</span><span class="p">:</span>
+     <span class="sd">&quot;&quot;&quot;Describes arguments for enhancement_take() method.&quot;&quot;&quot;</span>
+
+     <span class="k">class</span> <span class="nc">PriorityLevel</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+         <span class="sd">&quot;&quot;&quot;Possible priority levels.&quot;&quot;&quot;</span>
+         <span class="n">STANDARD</span> <span class="o">=</span> <span class="mi">0</span>
+         <span class="n">IFB</span> <span class="o">=</span> <span class="mi">1</span>
+
+     <span class="k">class</span> <span class="nc">ControlOptions</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+         <span class="sd">&quot;&quot;&quot;Possible control options.&quot;&quot;&quot;</span>
+         <span class="n">OFF</span> <span class="o">=</span> <span class="mi">0</span>
+         <span class="n">ON</span> <span class="o">=</span> <span class="mi">1</span>
+         <span class="n">MOMENTARY</span> <span class="o">=</span> <span class="mi">2</span>
+
+     <span class="k">class</span> <span class="nc">ActionOptions</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+         <span class="sd">&quot;&quot;&quot;Possible actions.&quot;&quot;&quot;</span>
+         <span class="n">TAKE</span> <span class="o">=</span> <span class="mi">0</span>
+         <span class="n">SUM</span> <span class="o">=</span> <span class="mi">1</span>
+         <span class="n">DIRECT_RELAY_CONTROL</span> <span class="o">=</span> <span class="mi">2</span>
+
+     <span class="k">class</span> <span class="nc">SuppliedGainValueUsage</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+         <span class="sd">&quot;&quot;&quot;Should use specified gain value.&quot;&quot;&quot;</span>
+         <span class="n">NO</span> <span class="o">=</span> <span class="mi">0</span>
+         <span class="n">YES</span> <span class="o">=</span> <span class="mi">1</span>
+
+     <span class="k">class</span> <span class="nc">CurrentXpointTransitionCtlSpec</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+         <span class="sd">&quot;&quot;&quot;Should use current xpoint transition control specification.&quot;&quot;&quot;</span>
+         <span class="n">NO</span> <span class="o">=</span> <span class="mi">0</span>
+         <span class="n">YES</span> <span class="o">=</span> <span class="mi">1</span>
+
+     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                  <span class="n">priority_level</span><span class="p">:</span> <span class="n">PriorityLevel</span><span class="p">,</span>
+                  <span class="n">control_options</span><span class="p">:</span> <span class="n">ControlOptions</span><span class="p">,</span>
+                  <span class="n">action_options</span><span class="p">:</span> <span class="n">ActionOptions</span><span class="p">,</span>
+                  <span class="n">use_supplied_gain_value</span><span class="p">:</span> <span class="n">SuppliedGainValueUsage</span><span class="p">,</span>
+                  <span class="n">use_current_xpoint_transition_ctl_spec</span><span class="p">:</span> <span class="n">CurrentXpointTransitionCtlSpec</span>
+                  <span class="p">):</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">priority_level</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">control_options</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">action_options</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">use_supplied_gain_value</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">9</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">use_current_xpoint_transition_ctl_spec</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">10</span>
+
+     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">         Get calculated enhanced take command options numeric value.</span>
+<span class="sd">         :return: value calculated for arguments provided in constructor.</span>
+<span class="sd">         &quot;&quot;&quot;</span>
+         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
+
+
+ <span class="k">class</span> <span class="nc">ConsoleModuleAction</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Possible console module actions.&quot;&quot;&quot;</span>
+     <span class="n">TURN_MODULE_OFF_WITH_SOURCE_SELECTED</span> <span class="o">=</span> <span class="mi">0</span>
+     <span class="n">TURN_MODULE_ON_WITH_SOURCE_SELECTED</span> <span class="o">=</span> <span class="mi">1</span>
+     <span class="n">TURN_CUE_OFF_ON_MODULE_WITH_SOURCE_SELECTED</span> <span class="o">=</span> <span class="mi">2</span>
+     <span class="n">TURN_CUE_ON_ON_MODULE_WITH_SOURCE_SELECTED</span> <span class="o">=</span> <span class="mi">3</span>
+
+
+ <span class="k">class</span> <span class="nc">AlphanumericNameInquiryInputOutput</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Alphanumeric name inquiry should be shown for input or output.&quot;&quot;&quot;</span>
+     <span class="n">INPUT</span> <span class="o">=</span> <span class="mi">0</span>
+     <span class="n">OUTPUT</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+ <span class="k">class</span> <span class="nc">FeedbackReplies</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Feedback replies should be enabled or disabled.&quot;&quot;&quot;</span>
+     <span class="n">ENABLED</span> <span class="o">=</span> <span class="mi">1</span>
+     <span class="n">DISABLED</span> <span class="o">=</span> <span class="mi">0</span>
+
+
+ <span class="k">class</span> <span class="nc">FeedbackTally</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Possible feedback tally options.&quot;&quot;&quot;</span>
+     <span class="n">NO_TALLY_OF_XPOINT_ACTIVITY_OR_ALPHA_CHANGE_NOTIFICATION</span> <span class="o">=</span> <span class="mi">0</span>
+     <span class="n">XPOINT_TALLY_IN_NUMERICAL_FORMAT_ONLY</span> <span class="o">=</span> <span class="mi">1</span>
+     <span class="n">XPOINT_TALLY_AS_CHANNEL_ALPHA_LABELS_ONLY</span> <span class="o">=</span> <span class="mi">2</span>
+     <span class="n">XPOINT_TALLY_BOTH_NUMERICAL_AND_ALPHA_LABELS</span> <span class="o">=</span> <span class="mi">3</span>
+     <span class="n">NOTIFICATION_OF_CHANGES_TO_THE_ALPHA_LABELS</span> <span class="o">=</span> <span class="mi">4</span>
+     <span class="n">NUMERICAL_TALLY_AND_ALPHA_CHANGE_NOTIFICATION</span> <span class="o">=</span> <span class="mi">5</span>
+     <span class="n">ALPHA_LABEL_TALLY_AND_ALPHA_CHANGE_NOTIFICATION</span> <span class="o">=</span> <span class="mi">6</span>
+     <span class="n">NUMERICAL_AND_ALPHA_LABEL_TALLY_WITH_ALPHA_CHANGE_NOTICE</span> <span class="o">=</span> <span class="mi">7</span>
+     <span class="n">NOTICE_OF_CONSOLE_MODULE_OPERATIONS_ONLY</span> <span class="o">=</span> <span class="mi">8</span>
+     <span class="n">NOTICE_OF_CONSOLE_MODULE_OPERATIONS_AND_NUMERICAL_TALLY_AND_ALPHA_CHANGE_NOTIFICATION</span> <span class="o">=</span> <span class="mi">9</span>
+
+
+ <span class="k">class</span> <span class="nc">FeedbackProtocol</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Possible feedback variants.&quot;&quot;&quot;</span>
+     <span class="n">THREE_DIGIT_ASCII_STYLE_XPOINT_TALLY</span> <span class="o">=</span> <span class="mi">0</span>
+     <span class="n">TWO_DIGIT_ASCII_HEX_STYLE_XPOINT_TALLY</span> <span class="o">=</span> <span class="mi">1</span>
+     <span class="n">FOUR_DIGIT_ASCII_STYLE_XPOINT_TALLY</span> <span class="o">=</span> <span class="mi">2</span>
+
+
+ <span class="k">class</span> <span class="nc">Reply</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Default replies.&quot;&quot;&quot;</span>
+     <span class="n">OK</span> <span class="o">=</span> <span class="mi">0</span>
+     <span class="n">ERROR</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">sas32kd</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">SAS 32 KD Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sas_library.html">SAS Library examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sas_listener_library.html">SAS Listener Library Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Enums</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="sas_listener_library.html" title="previous chapter">SAS Listener Library Examples</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, avc.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/pages/enums.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

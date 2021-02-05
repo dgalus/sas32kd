@@ -19,6 +19,10 @@ https://sas32kd.rtfd.io
 
 Documentation can be also found in the `docs/` directory as reStructuredText files. Build the docs by running `make` in the `docs/` directory, then viewing `docs/_build/html/index.html`.
 
+Installation
+------------
+    python -m pip install sas32kd
+
 Author
 ------
 dgalus / avc <avcsec@protonmail.com>

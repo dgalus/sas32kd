@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAS Library examples &#8212; sas32kd 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SAS Listener Library examples" href="sas_listener_library.html" />
+    <link rel="prev" title="SAS 32 KD Library" href="quickstart.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="sas-library-examples">
+<h1>SAS Library examples<a class="headerlink" href="#sas-library-examples" title="Permalink to this headline">¶</a></h1>
+<p><strong>Import library:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sas32kd</span> <span class="kn">import</span> <span class="n">Sas32kd</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Connect to SAS audio router TCP/IP Server Module:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sas</span> <span class="o">=</span> <span class="n">Sas32kd</span><span class="p">(</span><span class="n">ip</span><span class="o">=</span><span class="s2">&quot;10.10.10.10&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">1270</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Port and timeout are optional arguments.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Disconnecting from TCP/IP Server Module:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sas</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Take command:</strong>
+<em>take(input: int, output: int)</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">sas</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>inp: Input channel number</p></li>
+<li><p>outp: Output channel number</p></li>
+</ul>
+<div class="line-block">
+<div class="line">returns: <em>Reply.OK</em> or <em>Reply.ERROR</em></div>
+<div class="line"><br /></div>
+</div>
+<p><strong>Enhanced take command:</strong>
+<em>enhanced_take(inp: int, outp: int, gain: int, options: EnhancedTakeOptions)</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">sas</span><span class="o">.</span><span class="n">enhanced_take</span><span class="p">(</span>
+  <span class="mi">10</span><span class="p">,</span>
+  <span class="mi">300</span><span class="p">,</span>
+  <span class="mi">1500</span><span class="p">,</span>
+  <span class="n">EnhancedTakeOptions</span><span class="p">(</span>
+    <span class="n">PriorityLevel</span><span class="o">.</span><span class="n">STANDARD</span><span class="p">,</span>
+    <span class="n">ControlOptions</span><span class="o">.</span><span class="n">ON</span><span class="p">,</span>
+    <span class="n">ActionOptions</span><span class="o">.</span><span class="n">SUM</span><span class="p">,</span>
+    <span class="n">SuppliedGainValueUsage</span><span class="o">.</span><span class="n">YES</span><span class="p">,</span>
+    <span class="n">CurrentXpointTransitionCtlSpec</span><span class="o">.</span><span class="n">YES</span>
+  <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>inp: Input channel number.</p></li>
+<li><p>outp: Output channel number.</p></li>
+<li><p>gain: Source target gain level (1/10 dB steps, 1024 = Unity; valid 0 to 2048).</p></li>
+<li><p>options: Options. (Refer: EnhancedTakeOptions class).</p></li>
+</ul>
+<div class="line-block">
+<div class="line">returns: <em>Reply.OK</em> or <em>Reply.ERROR</em></div>
+<div class="line"><br /></div>
+</div>
+<p><strong>Relay command:</strong>
+<em>relay(action: RelayAction, num: int)</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">sas</span><span class="o">.</span><span class="n">relay</span><span class="p">(</span><span class="n">RelayAction</span><span class="o">.</span><span class="n">LATCH</span><span class="p">,</span> <span class="mi">123</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>action: Action to be performed on relay. (Refer: RelayAction class).</p></li>
+<li><p>num: Relay number.</p></li>
+</ul>
+<div class="line-block">
+<div class="line">returns: <em>Reply.OK</em> or <em>Reply.ERROR</em></div>
+<div class="line"><br /></div>
+</div>
+<p><strong>Opto command:</strong>
+<em>opto(action: OptoAction, num: int)</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">sas</span><span class="o">.</span><span class="n">opto</span><span class="p">(</span><span class="n">OptoAction</span><span class="o">.</span><span class="n">ON</span><span class="p">,</span> <span class="mi">123</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>action: Action to be performed on opto. (Refer: OptoAction class).</p></li>
+<li><p>num: Opto number.</p></li>
+</ul>
+<div class="line-block">
+<div class="line">returns: <em>Reply.OK</em> or <em>Reply.ERROR</em></div>
+<div class="line"><br /></div>
+</div>
+<p><strong>Salvo command:</strong>
+<em>salvo(option: SalvoOption, num: int)</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">sas</span><span class="o">.</span><span class="n">salvo</span><span class="p">(</span><span class="n">SalvoOption</span><span class="o">.</span><span class="n">ACTUAL_SALVO_NUM</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>option: Ordering type of salvos. (Refer: SalvoOption class).</p></li>
+<li><p>num: Salvo number.</p></li>
+</ul>
+<div class="line-block">
+<div class="line">returns: <em>Reply.OK</em> or <em>Reply.ERROR</em></div>
+<div class="line"><br /></div>
+</div>
+<p><strong>Crosspoint transition control:</strong>
+<em>crosspoint_transition_control(setting: CrosspointTransitionControlSetting, fade_in_time: FadeTime, fade_out_time: FadeTime, channel: int)</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">sas</span><span class="o">.</span><span class="n">crosspoint_transition_control</span><span class="p">(</span>
+  <span class="n">CrosspointTransitionControlSetting</span><span class="o">.</span><span class="n">FADE_OUT_FADE_IN</span><span class="p">,</span>
+  <span class="n">FadeTime</span><span class="o">.</span><span class="n">T_5S</span><span class="p">,</span>
+  <span class="n">FadeTime</span><span class="o">.</span><span class="n">T_5S</span><span class="p">,</span>
+  <span class="mi">30</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>setting: Type of transition. (Refer: CrosspointTransitionControlSetting class).</p></li>
+<li><p>fade_in_time: Fade in time. (Refer: FadeTime class).</p></li>
+<li><p>fade_out_time: Fade out time. (Refer: FadeTime class).</p></li>
+<li><p>channel: Output channel number.</p></li>
+</ul>
+<div class="line-block">
+<div class="line">returns: <em>Reply.OK</em> or <em>Reply.ERROR</em></div>
+<div class="line"><br /></div>
+</div>
+<p><strong>Gain change command:</strong>
+<em>gain_change(inp: int, outp: int, gain: int, fade_time: FadeTime, stage: GainChangeStage)</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">sas</span><span class="o">.</span><span class="n">gain_change</span><span class="p">(</span>
+  <span class="mi">123</span><span class="p">,</span>
+  <span class="mi">234</span><span class="p">,</span>
+  <span class="mi">1500</span><span class="p">,</span>
+  <span class="n">FadeTime</span><span class="o">.</span><span class="n">T_3S</span><span class="p">,</span>
+  <span class="n">GainChangeStage</span><span class="o">.</span><span class="n">OUTPUT_GAIN_TRIM</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>inp: Input channel number.</p></li>
+<li><p>outp: Output channel number.</p></li>
+<li><p>gain: Source target gain level (1/10 dB steps, 1024 = Unity; valid 0 to 2048).</p></li>
+<li><p>fade_time: Fade time. (Refer: FadeTime class).</p></li>
+<li><p>stage: Gain change stage. (Refer: GainChangeStage class).</p></li>
+</ul>
+<div class="line-block">
+<div class="line">returns: <em>Reply.OK</em> or <em>Reply.ERROR</em></div>
+<div class="line"><br /></div>
+</div>
+<p><strong>Stereo link modifier:</strong>
+<em>stereo_link(option: StereoLinkOption, setting: StereoLinkSetting, channel: int)</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">sas</span><span class="o">.</span><span class="n">stereo_link</span><span class="p">(</span>
+  <span class="n">StereoLinkOption</span><span class="o">.</span><span class="n">INPUT_LINK</span><span class="p">,</span>
+  <span class="n">StereoLinkSetting</span><span class="o">.</span><span class="n">LR_MONO_SUM</span><span class="p">,</span>
+  <span class="mi">234</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>option: Input or output link. (Refer: StereoLinkOption class).</p></li>
+<li><p>setting: Mono, stereo, source dependent or LR mono sum. (Refer: StereoLinkSetting class).</p></li>
+<li><p>channel: Output channel number.</p></li>
+</ul>
+<div class="line-block">
+<div class="line">returns: <em>Reply.OK</em> or <em>Reply.ERROR</em></div>
+<div class="line"><br /></div>
+</div>
+<p><strong>Console module control command:</strong>
+<em>console_module_control(action: ConsoleModuleAction, console_id: int, source: int)</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">sas</span><span class="o">.</span><span class="n">console_module_control</span><span class="p">(</span>
+  <span class="n">ConsoleModuleAction</span><span class="o">.</span><span class="n">TURN_MODULE_ON_WITH_SOURCE_SELECTED</span><span class="p">,</span>
+  <span class="mi">2</span><span class="p">,</span>
+  <span class="mi">234</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>action: Console source/module control options. (Refer: ConsoleModuleAction class).</p></li>
+<li><p>console_id: System console number (1 to 256 or 999 = any).</p></li>
+<li><p>source: Source channel number (1 to 9998).</p></li>
+</ul>
+<div class="line-block">
+<div class="line">returns: <em>Reply.OK</em> or <em>Reply.ERROR</em></div>
+<div class="line"><br /></div>
+</div>
+<p><strong>Console module channel label override command:</strong>
+<em>console_module_channel_label_override(self, console_id: int, source: int, label: str)</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">sas</span><span class="o">.</span><span class="n">console_module_channel_label_override</span><span class="p">(</span>
+  <span class="mi">2</span><span class="p">,</span>
+  <span class="mi">3</span><span class="p">,</span>
+  <span class="s2">&quot;PGM X   &quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>console_id: System console number (1 to 256 or 999 = any).</p></li>
+<li><p>source: Source channel number (1 to 9998).</p></li>
+<li><p>label: 8 character alpha label to be displayed by the addressed modules.</p></li>
+</ul>
+<div class="line-block">
+<div class="line">returns: <em>Reply.OK</em> or <em>Reply.ERROR</em></div>
+<div class="line"><br /></div>
+</div>
+<p><strong>Inquiry command:</strong>
+<em>inquiry(outp: int)</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">sas</span><span class="o">.</span><span class="n">inquiry</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>outp: Output channel (1 to 256 or 999 - any).</p></li>
+</ul>
+<div class="line-block">
+<div class="line">returns: Three digit input assigned to specified output or inputs assigned to each output in ascending order.</div>
+<div class="line"><br /></div>
+</div>
+<p><strong>Expanded channel inquiry command:</strong>
+<em>expanded_channel_inquiry(destination: int)</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">sas</span><span class="o">.</span><span class="n">expanded_channel_inquiry</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>destination: Destination channel number (1 to 9998).</p></li>
+</ul>
+<div class="line-block">
+<div class="line">returns: Dict with all sources currently assigned to output, with priority levels.</div>
+<div class="line"><br /></div>
+</div>
+<p><strong>Alphanumeric name inquiry command:</strong>
+<em>alphanumeric_name_inquiry(input_output: AlphanumericNameInquiryInputOutput, channel_num: int)</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">sas</span><span class="o">.</span><span class="n">alphanumeric_name_inquiry</span><span class="p">(</span>
+  <span class="n">AlphanumericNameInquiryInputOutput</span><span class="o">.</span><span class="n">INPUT</span><span class="p">,</span>
+  <span class="mi">123</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>input_output: Input or output. (Refer: AlphanumericNameInquiryInputOutput class).</p></li>
+<li><p>channel_num: Channel number. (1 to 256. 998 - all channel sorted alphabetically. 999 - all channels in order of channel number).</p></li>
+</ul>
+<div class="line-block">
+<div class="line">returns: Alpha label for input or output.</div>
+<div class="line"><br /></div>
+</div>
+<p><strong>Feedback command:</strong>
+<em>feedback(replies: FeedbackReplies, feedback_tally: FeedbackTally, feedback_protocol: FeedbackProtocol)</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">sas</span><span class="o">.</span><span class="n">feedback</span><span class="p">(</span>
+  <span class="n">FeedbackReplies</span><span class="o">.</span><span class="n">ENABLED</span><span class="p">,</span>
+  <span class="n">FeedbackTally</span><span class="o">.</span><span class="n">NUMERICAL_TALLY_AND_ALPHA_CHANGE_NOTIFICATION</span><span class="p">,</span>
+  <span class="n">FeedbackProtocol</span><span class="o">.</span><span class="n">THREE_DIGIT_ASCII_STYLE_XPOINT_TALLY</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>replies: Enable or disable replies. (Refer: FeedbackReplies class).</p></li>
+<li><p>feedback_tally: Feedback tally variants. (Refer: FeedbackTally class).</p></li>
+<li><p>feedback_protocol: Feedback protocol variants. (Refer: FeedbackProtocol class).</p></li>
+</ul>
+<div class="line-block">
+<div class="line">returns: <em>Reply.OK</em> or <em>Reply.ERROR</em>.</div>
+<div class="line"><br /></div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">sas32kd</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">SAS 32 KD Library</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SAS Library examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sas_listener_library.html">SAS Listener Library examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="quickstart.html" title="previous chapter">SAS 32 KD Library</a></li>
+      <li>Next: <a href="sas_listener_library.html" title="next chapter">SAS Listener Library examples</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, avc.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/pages/sas_library.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
