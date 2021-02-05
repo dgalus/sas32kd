@@ -4,3 +4,5 @@ tmp.py
 *.egg-info
 dist/
 *.pyc
+.idea
+*.deb
